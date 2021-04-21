@@ -1,9 +1,5 @@
 version: 2
 
-orbs:
-  node: circleci/node@4.0.0
-  aws-s3: circleci/aws-s3@1.1.0
-  slack: circleci/slack@4.0.0
 
 jobs: 
   build:
