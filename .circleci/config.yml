@@ -1,10 +1,29 @@
 version: 2
 
-
 jobs: 
-  build:
-    docker: 
-      - image: 'cimg/python:3.6'
-    steps:
-      - checkout
-      - run: echo "hello junip"  
+  one: 
+    build:
+      docker: 
+        - image: 'cimg/python:3.6'
+      steps:
+        - checkout
+        - run: echo "hello junip"  
+  two: 
+    build:
+      docker:
+        - image: 'cimg/python:3.6'      
+      steps:
+        - checkout
+        - run |
+          echo "asdasd"
+          echo "asdalskdhlkas"
+          echio "asdasdwef"
+
+workflows:
+  version: 2
+  oneasd: 
+    jobs:
+      - one
+      - two: 
+        - requires: 
+            - one
