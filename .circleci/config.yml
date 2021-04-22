@@ -12,10 +12,12 @@ jobs:
       - image: 'cimg/python:3.6'      
     steps:
       - checkout
-      - run |
-        echo "asdasd"
-        echo "asdalskdhlkas"
-        echio "asdasdwef"
+      - run:
+          name: "second build command"
+          command: |
+            echo "asdasd"
+            echo "asdasd333"
+        
 
 workflows:
   version: 2
