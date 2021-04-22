@@ -1,29 +1,26 @@
 version: 2
 
 jobs: 
-  one: 
-    build:
-      docker: 
-        - image: 'cimg/python:3.6'
-      steps:
-        - checkout
-        - run: echo "hello junip"  
-  two: 
-    build:
-      docker:
-        - image: 'cimg/python:3.6'      
-      steps:
-        - checkout
-        - run |
-          echo "asdasd"
-          echo "asdalskdhlkas"
-          echio "asdasdwef"
+  build1:
+    docker: 
+      - image: 'cimg/python:3.6'
+    steps:
+      - checkout
+      - run: echo "hello junip"  
+  build2:
+    docker:
+      - image: 'cimg/python:3.6'      
+    steps:
+      - checkout
+      - run |
+        echo "asdasd"
+        echo "asdalskdhlkas"
+        echio "asdasdwef"
 
 workflows:
-  version: 2
-  oneasd: 
+  test_and_deploy: 
     jobs:
-      - one
-      - two: 
+      - build1
+      - build2: 
         - requires: 
-            - one
+            - build1
