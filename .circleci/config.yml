@@ -17,6 +17,37 @@ jobs:
           command: |
             echo "asdasd"
             echo "asdasd333"
+  build3:
+    docker:
+      - image: 'cimg/python:3.6'      
+    steps:
+      - checkout
+      - run:
+          name: "third build command"
+          command: |
+            echo "third build running"
+            echo "third build message printed"
+  build4:
+    docker:
+      - image: 'cimg/python:3.6'      
+    steps:
+      - checkout
+      - run:
+          name: "fourth build command"
+          command: |
+            echo "fourth build running"
+            echo "fourth build message printed"   
+  build5:
+    docker:
+      - image: 'cimg/python:3.6'      
+    steps:
+      - checkout
+      - run:
+          name: "fifth build command"
+          command: |
+            echo "fifth build running"
+            echo "fifth build message printed"          
+            
         
 
 workflows:
@@ -27,3 +58,15 @@ workflows:
       - build2: 
           requires: 
             - build1
+      - build3: 
+          requires: 
+            - build1
+      - build4: 
+          requires: 
+            - build1
+      - build5: 
+          requires: 
+            - build2
+            - build3
+            - build4
+            
