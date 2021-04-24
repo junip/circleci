@@ -66,56 +66,58 @@ jobs:
           channel: C01VBGM6DM0
           event: pass
           custom: |
-          {
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*:rocket: Deployment Successful!*"
-                }
-              },
-              {
-                "type": "section",
-                "fields": [
-                  {
+            { 
+              "text": "CircleCI job succeeded!",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
                     "type": "mrkdwn",
-                    "text": "*Project*:\\n$CIRCLE_PROJECT_REPONAME"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Branch*:\\n$CIRCLE_BRANCH"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Commit*:\\n$CIRCLE_SHA1"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Author*:\\n$CIRCLE_USERNAME"
+                    "text": "*:rocket: Deployment Successful!*"
                   }
-                ],
-                "accessory": {
-                  "type": "image",
-                  "image_url": "https://w7.pngwing.com/pngs/814/561/png-transparent-brown-and-white-rocket-illustration-kennedy-space-center-space-shuttle-program-sts-129-international-space-station-space-shuttle-atlantis-rockets-spacecraft-rocket-launch-nasa.png",
-                  "alt_text": "CircleCI logo"
-                }
-              },
-              {
-                "type": "actions",
-                "elements": [
-                  {
-                    "type": "button",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "View Job"
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Project*:\\n$CIRCLE_PROJECT_REPONAME"
                     },
-                    "url": "${CIRCLE_BUILD_URL}"
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Branch*:\\n$CIRCLE_BRANCH"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Commit*:\\n$CIRCLE_SHA1"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Author*:\\n$CIRCLE_USERNAME"
+                    }
+                  ],
+                  "accessory": {
+                    "type": "image",
+                    "image_url": "https://w7.pngwing.com/pngs/814/561/png-transparent-brown-and-white-rocket-illustration-kennedy-space-center-space-shuttle-program-sts-129-international-space-station-space-shuttle-atlantis-rockets-spacecraft-rocket-launch-nasa.png",
+                    "alt_text": "CircleCI logo"
                   }
-                ]
-              }
-            ]
-          }  
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+         
 
 workflows:
   version: 2
