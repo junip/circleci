@@ -59,7 +59,7 @@ jobs:
           command: "sending slack notifications"
       - slack/notify:
           channel: C01VBGM6DM0
-          event: pass
+          event: always
           template: basic_fail_1 
 
 workflows:
@@ -83,7 +83,5 @@ workflows:
             - build3
             - build4
       - notification_on_slack:
-          context:
-            - slack-secrets  
           requires: 
             - build5
