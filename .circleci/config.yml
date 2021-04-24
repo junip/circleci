@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+orbs:
+  slack: circleci/slack@4.4.0
+
 
 jobs: 
   build1:
@@ -47,8 +50,17 @@ jobs:
           command: |
             echo "fifth build running"
             echo "fifth build message printed"          
-            
-        
+  notification_on_slack:
+    docker:
+      - image: 'cimg/python:3.6' 
+    steps:
+      - run:
+          name: 'slack notifications'
+          command: "sending slack notifications"
+      - slack/notify:
+          channel: C01VBGM6DM0
+          event: pass
+          template: basic_fail_1 
 
 workflows:
   version: 2
@@ -70,4 +82,6 @@ workflows:
             - build2
             - build3
             - build4
-            
+      - notification_on_slack:
+          requires: 
+            - build5
