@@ -83,5 +83,7 @@ workflows:
             - build3
             - build4
       - notification_on_slack:
+          context:
+            - slack-secrets  
           requires: 
             - build5
