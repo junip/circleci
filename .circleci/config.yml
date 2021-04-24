@@ -56,7 +56,7 @@ jobs:
     steps:
       - run:
           name: 'slack notifications'
-          command: "sending slack notifications"
+          command: echo "asdasd"
       - slack/notify:
           channel: C01VBGM6DM0
           event: always
