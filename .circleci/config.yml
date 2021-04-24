@@ -82,7 +82,6 @@ workflows:
           requires: 
             - build1
       - build5: 
-          type: approval 
           requires: 
             - build2
             - build3
