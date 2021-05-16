@@ -50,7 +50,7 @@ jobs:
           command: |
             myName="asdasdasd"
             echo "Import Map before deployment:"
-            echo " $(myName)"   
+            echo $myName 
   build6: 
     docker:
       - image: 'cimg/python:3.6' 
