@@ -48,9 +48,10 @@ jobs:
       - run:
           name: "fifth build command"
           command: |
-            myName="asdasdasd"
-            echo "Import Map before deployment:"
-            echo $myName 
+            echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+      - run:
+          name: "What branch am I on now?"
+          command: echo ${MY_ENV_VAR}     
   build6: 
     docker:
       - image: 'cimg/python:3.6' 
