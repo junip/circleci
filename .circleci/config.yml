@@ -60,9 +60,10 @@ jobs:
       - run:
           name: "executing sixth command"
           command: |
-            myName="asdasdasd"
-            echo "Import Map before deployment:"
-            echo " $(myName)"               
+            var approver=curl -s --request GET 'https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/job' \
+            --header "circle-token: $CIRCLECI_TOKEN" \
+            --header 'content-type: application/json' | jq '.items | .[] | select(.type == "approval") | {approved_by}'               
+            echo 'export BUILD_APPROVER=${approver}' >> $BASH_ENV
   notification_on_slack:
     docker:
       - image: 'cimg/python:3.6' 
@@ -72,7 +73,7 @@ jobs:
           command: | 
             echo "Import Map before deployment:"
             echo " $(myName)"
-          run: echo " $(myName)"
+          run: echo " ${BUILD_APPROVER}"
       - slack/notify:
           channel: C01VBGM6DM0
           event: pass
