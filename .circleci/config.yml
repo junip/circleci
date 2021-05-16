@@ -68,7 +68,7 @@ jobs:
     steps:
       - run:
           name: 'slack notifications'
-          command: echo "$NAME"
+          command: echo $myName
       - slack/notify:
           channel: C01VBGM6DM0
           event: pass
