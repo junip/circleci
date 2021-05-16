@@ -64,6 +64,11 @@ jobs:
             --header "circle-token: $CIRCLECI_TOKEN" \
             --header 'content-type: application/json' | jq '.items | .[] | select(.type == "approval") | {approved_by}'               
             echo 'export BUILD_APPROVER=${approver}' >> $BASH_ENV
+  build7:
+    docker:
+      - image: 'cimg/python:3.6' 
+    steps:
+      - run:  echo ${BUILD_APPROVER}        
   notification_on_slack:
     docker:
       - image: 'cimg/python:3.6' 
