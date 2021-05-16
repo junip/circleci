@@ -58,17 +58,18 @@ jobs:
       - run:
           name: "executing sixth command"
           command: |
-            myName="Junip Dewan"
-            echo ""
-            echo "sixth build running"
-            echo "sixth build message printed"                    
+            myName="asdasdasd"
+            echo "Import Map before deployment:"
+            echo " $(myName)"               
   notification_on_slack:
     docker:
       - image: 'cimg/python:3.6' 
     steps:
       - run:
           name: 'slack notifications'
-          command: echo $myName
+          command: | 
+            echo "Import Map before deployment:"
+            echo " $(myName)"
       - slack/notify:
           channel: C01VBGM6DM0
           event: pass
