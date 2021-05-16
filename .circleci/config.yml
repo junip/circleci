@@ -49,14 +49,26 @@ jobs:
           name: "fifth build command"
           command: |
             echo "fifth build running"
-            echo "fifth build message printed"          
+            echo "fifth build message printed"    
+  build6: 
+    docker:
+      - image: 'cimg/python:3.6' 
+    steps:
+      - checkout
+      - run:
+          name: "executing sixth command"
+          command: |
+            myName="Junip Dewan"
+            echo ""
+            echo "sixth build running"
+            echo "sixth build message printed"                    
   notification_on_slack:
     docker:
       - image: 'cimg/python:3.6' 
     steps:
       - run:
           name: 'slack notifications'
-          command: echo "asdasd"
+          command: echo $NAME
       - slack/notify:
           channel: C01VBGM6DM0
           event: pass
@@ -138,6 +150,10 @@ workflows:
             - build2
             - build3
             - build4
+      - build6:
+          type: approval
+          requires:
+            - build5
       - notification_on_slack:
           requires: 
-            - build5
+            - build6
