@@ -167,4 +167,6 @@ workflows:
       - notification_on_slack:
           requires: 
             - build6
-      - build7     
+      - build7
+          requires:
+            - build6    
